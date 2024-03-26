@@ -71,8 +71,7 @@ class Dropbox {
   /// use getAccessToken() to get Access Token after successful authorize().
   /// authorizeWithAccessToken() will authorize without user interaction if access token is valid.
   static Future authorizeWithAccessToken(String accessToken) async {
-    await _channel.invokeMethod(
-            'authorizeWithAccessToken', {'accessToken': accessToken});
+    await _channel.invokeMethod('authorizeWithAccessToken', {'accessToken': accessToken});
   }
 
   /// Authorize with Credentials

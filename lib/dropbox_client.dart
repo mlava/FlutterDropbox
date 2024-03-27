@@ -27,7 +27,9 @@ class Dropbox {
   static Future<bool> init(String clientId, String key, String secret) async {
     _channel.setMethodCallHandler(_handleMethodCall);
 
-    return await _channel.invokeMethod('init', {'clientId': clientId, 'key': key, 'secret': secret}) ?? false;
+    return await _channel.invokeMethod(
+            'init', {'clientId': clientId, 'key': key, 'secret': secret}) ??
+        false;
   }
 
   static Future<void> _handleMethodCall(MethodCall call) async {
@@ -52,26 +54,27 @@ class Dropbox {
   ///
   /// Authorize using Dropbox app if it's installed. If not installed, it calls external web browser for authorization.
   /// When user authorizes, no feedback is available. call getAccessToken() to check if authorized.
-  static Future<bool> authorize() async {
-    return await _channel.invokeMethod('authorize') ?? false;
+  static Future<void> authorize() async {
+    await _channel.invokeMethod('authorize');
   }
 
   /// Authorize using short-lived tokens
-  static Future<bool> authorizePKCE() async {
-    return await _channel.invokeMethod('authorizePKCE') ?? false;
+  static Future<void> authorizePKCE() async {
+    await _channel.invokeMethod('authorizePKCE');
   }
 
   /// Unlink account (remove authorization).
-  static Future<bool> unlink() async {
-    return await _channel.invokeMethod('unlink') ?? false;
+  static Future<void> unlink() async {
+    await _channel.invokeMethod('unlink');
   }
 
   /// Authorize with AccessToken
   ///
   /// use getAccessToken() to get Access Token after successful authorize().
   /// authorizeWithAccessToken() will authorize without user interaction if access token is valid.
-  static Future authorizeWithAccessToken(String accessToken) async {
-    await _channel.invokeMethod('authorizeWithAccessToken', {'accessToken': accessToken});
+  static Future<void> authorizeWithAccessToken(String accessToken) async {
+    await _channel
+        .invokeMethod('authorizeWithAccessToken', {'accessToken': accessToken});
   }
 
   /// Authorize with Credentials
@@ -79,10 +82,9 @@ class Dropbox {
   /// use getCredentials() to get Access and Refresh Token after successful authorizePKCE().
   /// authorizeWithCredentials() will authorize without user interaction if access and refresh tokens are valid.
   /// It should automatically refresh the access token if expired
-  static Future<bool> authorizeWithCredentials(String credentials) async {
-    return await _channel.invokeMethod(
-            'authorizeWithCredentials', {'credentials': credentials}) ??
-        false;
+  static Future<void> authorizeWithCredentials(String credentials) async {
+    await _channel
+        .invokeMethod('authorizeWithCredentials', {'credentials': credentials});
   }
 
   // static Future<String> getAuthorizeUrl() async {

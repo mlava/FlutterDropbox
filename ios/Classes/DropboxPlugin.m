@@ -101,6 +101,7 @@ FlutterMethodChannel* channel;
       result(client.accessToken);
 
   } else if ([@"authorizeWithAccessToken" isEqualToString:call.method]) {
+      DBUserClient *client = [DBClientsManager authorizedClient];
       NSString *accessToken = call.arguments[@"accessToken"];
 
       [DBClientsManager authorizeClientFromKeychain:accessToken];

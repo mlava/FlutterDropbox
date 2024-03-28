@@ -41,7 +41,7 @@ FlutterMethodChannel* channel;
     [NSURLQueryItem queryItemWithName:@"client_id" value:appKey],
     [NSURLQueryItem queryItemWithName:@"disable_signup" value: @"true" ],
     [NSURLQueryItem queryItemWithName:@"locale" value:localeIdentifier],
-    [NSURLQueryItem queryItemWithName:@"token_access_type" value:@"offline"],
+    //[NSURLQueryItem queryItemWithName:@"token_access_type" value:@"offline"],
   ];
   return [components.URL absoluteString];
 }

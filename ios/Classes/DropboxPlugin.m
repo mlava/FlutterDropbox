@@ -105,7 +105,8 @@ FlutterMethodChannel* channel;
 
       [DBClientsManager authorizeClientFromKeychain:accessToken];
 
-      result(@(TRUE));
+      result(client.accessToken);
+      //result(@(TRUE));
   } else if ([@"authorizePKCE" isEqualToString:call.method]) {
       DBScopeRequest *scopeRequest = [[DBScopeRequest alloc] initWithScopeType:DBScopeTypeUser
                                                                         scopes:@[]

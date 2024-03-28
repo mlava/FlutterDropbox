@@ -128,7 +128,7 @@ FlutterMethodChannel* channel;
   } else if ([@"getCredentials" isEqualToString:call.method]) {
       // XXX iOS seems to use accessToken for management of keys (even if short lived PKCE is used)
       DBUserClient *client = [DBClientsManager authorizedClient];
-      result(authorizedClient.credentials);
+      result(client.credentials);
 
   } else if ([@"getAccountName" isEqualToString:call.method]) {
       DBUserClient *client = [DBClientsManager authorizedClient];
